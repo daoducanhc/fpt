@@ -14,10 +14,6 @@ void FreshUser::setClassName(string a)
 }
 
 
-BaseUser::BaseUser(uint id, string name, uint age, uint heightCm, string hobbyList, vector<uint> friendList)
-{
-}
-
 BaseUser::BaseUser(uint id, UserType type, string name, uint age, uint heightCm, string hobbyList, vector<uint> friendList)
 {
 }

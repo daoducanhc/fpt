@@ -1,0 +1,4 @@
+0;0;name1;20;170;bong da, bong ban;1,2
+1;0;name2;21;171;bong ban, cau long;2,3
+2;1;name3;22;172;cau long, bong da;3,0
+3;1;name4;23;173;cau long, bong chuyen;0,1

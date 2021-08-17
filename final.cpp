@@ -2,10 +2,14 @@
 //
 
 #include <iostream>
+#include "DbCtrl.h"
+
 
 int main()
 {
     std::cout << "Hello World!\n";
+    string filePath = "user.txt";
+    DbCtrl dbCtrl(filePath);
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
