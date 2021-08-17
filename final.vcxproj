@@ -139,7 +139,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BaseUser.cpp" />
+    <ClCompile Include="DbCtrl.cpp" />
+    <ClCompile Include="Fb.cpp" />
     <ClCompile Include="final.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BaseUser.h" />
+    <ClInclude Include="DbCtrl.h" />
+    <ClInclude Include="Fb.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
