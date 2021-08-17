@@ -5,9 +5,13 @@
 using namespace std;
 
 class Fb{
+private:
+    DbCtrl* dbCtrl;
+    
 public:
-    DbCtrl dbCtrl;
     vector<BaseUser> UserList;
+
+    Fb();
     void addUser(BaseUser a);
     void deleteUser(BaseUser a);
     vector<BaseUser> getUserByName(string name);

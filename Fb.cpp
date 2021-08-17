@@ -1,5 +1,11 @@
 #include "Fb.h"
 
+Fb::Fb()
+{
+	dbCtrl = new DbCtrl("user.csv");
+	UserList = dbCtrl->getUserList();
+}
+
 void Fb::addUser(BaseUser a)
 {
 	vector<uint> temp = a.getFriendList();
@@ -58,10 +64,15 @@ void Fb::addFriend(BaseUser a, vector<uint> idList)
 
 BaseUser* Fb::_getUserById(uint id)
 {
-	for (BaseUser user : UserList) {
+	for (int i = 0; i < UserList.size(); ++i) {
+		if (UserList[i].getId() == id) {
+			return &UserList[i];
+		}
+	}
+	/*for (BaseUser& user : UserList) {
 		if (user.getId() == id) {
 			return &user;
 		}
-	}
+	}*/
 	return NULL;
 }
