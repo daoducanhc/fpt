@@ -6,10 +6,14 @@ using namespace std;
 
 class Fb{
 public:
+    DbCtrl dbCtrl;
+    vector<BaseUser> UserList;
     void addUser(BaseUser a);
     void deleteUser(BaseUser a);
-    BaseUser getUserByName(string name);
+    vector<BaseUser> getUserByName(string name);
     vector<BaseUser> getFriendList(BaseUser a);
     vector<BaseUser> getUserListByHobbyList(string hobbyList);
     void addFriend(BaseUser a, vector<uint> idList);
+
+    BaseUser* _getUserById(uint id);
 };

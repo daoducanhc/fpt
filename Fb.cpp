@@ -1,22 +1,49 @@
 #include "Fb.h"
 
-
 void Fb::addUser(BaseUser a)
 {
+	vector<uint> temp = a.getFriendList();
+	auto it = temp.begin();
+	while (it != temp.end()) {
+		if (_getUserById(*it) == NULL) {
+			it = temp.erase(it);
+		}
+		else {
+			++it;
+		}
+	}
+	a.setFriendList(temp);
+	UserList.push_back(a);
 }
 
 void Fb::deleteUser(BaseUser a)
 {
 }
 
-//BaseUser Fb::getUserByName(string name)
-//{
-//	return;
-//}
+
+
+vector<BaseUser> Fb::getUserByName(string name)
+{
+	vector<BaseUser> result;
+	for (BaseUser user : UserList) {
+		if (user.getName() == name) {
+			result.push_back(user);
+		}
+	}
+	return result;
+}
 
 vector<BaseUser> Fb::getFriendList(BaseUser a)
 {
-	return vector<BaseUser>();
+	vector<BaseUser> result;
+	BaseUser* user;
+	for (uint id : a.getFriendList()) {
+		user = _getUserById(id);
+		if (user != NULL) {
+			result.push_back(*user);
+		}
+	}
+	return result;
 }
 
 vector<BaseUser> Fb::getUserListByHobbyList(string hobbyList)
@@ -26,4 +53,15 @@ vector<BaseUser> Fb::getUserListByHobbyList(string hobbyList)
 
 void Fb::addFriend(BaseUser a, vector<uint> idList)
 {
+}
+
+
+BaseUser* Fb::_getUserById(uint id)
+{
+	for (BaseUser user : UserList) {
+		if (user.getId() == id) {
+			return &user;
+		}
+	}
+	return NULL;
 }
