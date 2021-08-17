@@ -1,0 +1,35 @@
+Tạo một mạng xã hội dành cho các nhân viên (user) của fsoft:
+có 2 loại nhân viên:
+- nhân viên fresher
+- nhân viên chính thức
+Mỗi nhân viên đều có các thông tin sau:
++ Id (như là mã số nhân viên, số nguyên k dấu, không được trùng nhau)
++ vị trí position (0: fresher 1: nhân viên chính thức)
++ Name (chuỗi ký tự)
++ Tuổi age (số nguyên k dấu)
++ Chiều cao height ( số nguyên k dấu đơn vị cm)
++ Danh sách sở thích hobbies (chuỗi ký tự. Các sở thích cách nhau bởi dấu ",". Ví dụ: bong da, bong ban, cau long)
++ listFriends Danh sách bạn bè là Id của các user khác kết bạn
+
+ 
+
+Với nhân viên fresher thì có thêm thông tin:
++ tên lớp học (chuỗi ký tự)
+Với nhân viên chính thức thì có thêm thông tin:
++ đơn vị làm việc (chuỗi ký tự)
+Chương trình có các tính năng sau:     
+1. Chương trình có thể đọc/ghi từ file data User.txt
+2. Thêm 1 nhân viên vào mạng xã hội. Khi thêm 1 nhân viên mới thì các trường: Id, name, tên lớp học(với nhân viên fresher), 
+   đơn vị làm việc (với nhân viên chính thức) là bắt buộc.
+   Nếu nhập danh sách Id của người kết bạn phải kiểm tra từng Id có tồn tại trong hệ thống không.
+3. Xóa 1 user khỏi mạng xã hội. Id cần xóa sẽ do người dùng nhập vào. Không giới hạn số user bị xóa. 
+   Khi 1 user bị xóa thì phải cập nhập lại danh sách bạn bè của những user còn lại nếu liên quan.
+4. Tìm kiếm user theo name. Thông tin user tìm được phải hiện đầy đủ các thông tin theo đúng loại nhân viên.
+5. Liệt kê danh sách bạn bè của 1 User. Nhập vào ID thì cần phải list ra tất cả bạn bè của ID này.
+6. Tìm kiếm bằng sở thích(hobbie). Có thể tìm kiếm cùng lúc nhiều sở thích ví dụ người dùng nhập "bong da, bong ban" 
+   thì kết quả trả về tất cả ID của user có sở thích là "bong da" hoac "bong ban"
+7. Cho 1 user kết bạn với một số người bạn khác. Ds các người bạn này thì do chúng ta nhập vào.
+
+ 
+
+Chú ý: Vì là mạng xã hội nên có rất nhiều User. 1 User có rất nhiều sở thích. Vì vậy cần chú ý thiết kế class và dữ liệu sao cho tối ưu để khi tìm kiếm chương trình có thể trả về kết quả nhanh nhất có thể. Tất nhiên cần cân bằng giữa performace và memory.
