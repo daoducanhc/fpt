@@ -9,10 +9,10 @@ void Fb::deleteUser(BaseUser a)
 {
 }
 
-BaseUser Fb::getUserByName(string name)
-{
-	return BaseUser();
-}
+//BaseUser Fb::getUserByName(string name)
+//{
+//	return;
+//}
 
 vector<BaseUser> Fb::getFriendList(BaseUser a)
 {

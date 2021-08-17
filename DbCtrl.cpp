@@ -5,15 +5,15 @@
 #include <sstream>
 #include <vector>
 #include <string>
-#include <string_view>
 
+using namespace std;
 
 class CSVRow
 {
 public:
-    std::string_view operator[](std::size_t index) const
+    std::string operator[](std::size_t index) const
     {
-        return std::string_view(&m_line[m_data[index] + 1], m_data[index + 1] - (m_data[index] + 1));
+        return std::string(&m_line[m_data[index] + 1], m_data[index + 1] - (m_data[index] + 1));
     }
     std::size_t size() const
     {
@@ -52,13 +52,39 @@ DbCtrl::DbCtrl(string filePath)
     read();
 }
 
+vector<uint> parseFriendList(std::string sv) {
+    stringstream ss(sv);
+    vector<uint> result;
+    while (ss.good())
+    {
+        string substr;
+        getline(ss, substr, ',');
+        result.push_back(stoi(substr));
+    }
+    return result;
+}
+
 void DbCtrl::read()
 {
+    userList.clear();
     std::ifstream file(filePath);
     CSVRow row;
     while (file >> row)
     {
-        std::cout << "4th Element(" << row[3] << ")\n";
+        auto type = static_cast<UserType>(stoi(row[1]));
+        auto friendList = parseFriendList(row[6]);
+        if (type == UserType::Fresh) {
+            FreshUser user(
+                stoi(row[0]), row[2], stoi(row[3]), stoi(row[4]),
+                row[5], friendList, row[7]);
+            userList.push_back(user);
+        }
+        else if (type == UserType::Permanent) {
+            PermanentUser user(
+                stoi(row[0]), row[2], stoi(row[3]), stoi(row[4]),
+                row[5], friendList, row[7]);
+            userList.push_back(user);
+        }
     }
 }
 
@@ -68,6 +94,7 @@ vector<BaseUser> DbCtrl::getUserList()
 }
 
 
-void DbCtrl::write(vector<BaseUser> a)
+void DbCtrl::write(vector<BaseUser> user)
 {
+
 }

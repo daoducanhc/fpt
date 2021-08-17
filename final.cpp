@@ -8,8 +8,12 @@
 int main()
 {
     std::cout << "Hello World!\n";
-    string filePath = "user.txt";
+    string filePath = "./user.csv";
     DbCtrl dbCtrl(filePath);
+    auto userList = dbCtrl.getUserList();
+    for (auto user : userList) {
+        cout << user.getName();
+    }
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

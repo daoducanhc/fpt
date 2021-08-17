@@ -40,6 +40,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="user.txt" />
+    <CopyFileToFolders Include="user.csv" />
   </ItemGroup>
 </Project>
