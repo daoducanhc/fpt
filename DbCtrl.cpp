@@ -46,25 +46,24 @@ std::istream& operator>>(std::istream& str, CSVRow& data)
     return str;
 }
 
-DbCtrl::DbCtrl(string filePath)
+CsvReader::CsvReader(string filePath)
 {
 	this->filePath = filePath;
-    read();
 }
 
-vector<uint> parseFriendList(std::string sv) {
+unordered_set<uint> parseFriendList(std::string sv) {
     stringstream ss(sv);
-    vector<uint> result;
+    unordered_set<uint> result;
     while (ss.good())
     {
         string substr;
         getline(ss, substr, ',');
-        result.push_back(stoi(substr));
+        result.insert(stoi(substr));
     }
     return result;
 }
 
-void DbCtrl::read()
+void IDbReader::read()
 {
     userList.clear();
     std::ifstream file(filePath);
@@ -88,13 +87,14 @@ void DbCtrl::read()
     }
 }
 
-vector<BaseUser> DbCtrl::getUserList()
+vector<BaseUser> CsvReader::getUserList()
 {
     return userList;
 }
 
 
-void DbCtrl::write(vector<BaseUser> user)
+void CsvReader::write(vector<BaseUser> user)
 {
 
 }
+

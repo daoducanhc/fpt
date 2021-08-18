@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <vector>
+#include <unordered_set>
 using namespace std;
 using uint = unsigned int;
 
@@ -17,17 +18,17 @@ protected:
 	uint age;
 	uint heightCm;
 	string hobbyList;
-	vector<uint> friendList;
+	unordered_set<uint> friendList;
 public:
 	BaseUser(uint id, UserType type, string name, uint age = 0, uint heightCm = 0,
-		string hobbyList = "", vector<uint> friendList = {});
+		string hobbyList = "", unordered_set<uint> friendList = {});
 	uint getId();
 	UserType getType();
 	string getName();
 	uint getAge();
 	uint getHeightCm();
 	string getHobbyList();
-	vector<uint> getFriendList();
+	unordered_set<uint> getFriendList();
 
 	void setId(uint a);
 	void setType(UserType a);
@@ -35,15 +36,15 @@ public:
 	void setAge(uint a);
 	void setHeightCm(uint a);
 	void setHobbyList(string a);
-	void setFriendList(vector<uint> a);
+	void setFriendList(unordered_set<uint> a);
 };
 
 class FreshUser : public BaseUser {
 private:
 	string className;
 public:
-	FreshUser(uint id, string name, uint age = 0, uint heightCm = 0, 
-		string hobbyList = "", vector<uint> friendList = {}, string className="");
+	FreshUser(uint id, string name, uint age = 0, uint heightCm = 0,
+		string hobbyList = "", unordered_set<uint> friendList = {}, string className="");
 	string getClassName();
 	void setClassName(string a);
 };
@@ -53,7 +54,7 @@ private:
 	string departmentName;
 public:
 	PermanentUser(uint id, string name, uint age = 0, uint heightCm = 0,
-		string hobbyList = "", vector<uint> friendList = {}, string departmentName = "");
+		string hobbyList = "", unordered_set<uint> friendList = {}, string departmentName = "");
 	string getDepartmentName();
 	void setDepartmentName(string a);
 };

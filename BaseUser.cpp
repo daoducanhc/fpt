@@ -1,7 +1,7 @@
 #include "BaseUser.h"
 
 
-FreshUser::FreshUser(uint id, string name, uint age, uint heightCm, string hobbyList, vector<uint> friendList, string className)
+FreshUser::FreshUser(uint id, string name, uint age, uint heightCm, string hobbyList, unordered_set<uint> friendList, string className)
 	: BaseUser(id, UserType::Fresh, name, age, heightCm, hobbyList, friendList)
 {
 	this->className = className;
@@ -17,7 +17,7 @@ void FreshUser::setClassName(string a)
 	this->className = a;
 }
 
-BaseUser::BaseUser(uint id, UserType type, string name, uint age, uint heightCm, string hobbyList, vector<uint> friendList)
+BaseUser::BaseUser(uint id, UserType type, string name, uint age, uint heightCm, string hobbyList, unordered_set<uint> friendList)
 {
 	this->id = id;
 	this->type = type;
@@ -58,7 +58,7 @@ string BaseUser::getHobbyList()
 	return this->hobbyList;
 }
 
-vector<uint> BaseUser::getFriendList()
+unordered_set<uint> BaseUser::getFriendList()
 {
 	return this->friendList;
 }
@@ -93,12 +93,12 @@ void BaseUser::setHobbyList(string a)
 	this->hobbyList = a;
 }
 
-void BaseUser::setFriendList(vector<uint> a)
+void BaseUser::setFriendList(unordered_set<uint> a)
 {
 	this->friendList = a;
 }
 
-PermanentUser::PermanentUser(uint id, string name, uint age, uint heightCm, string hobbyList, vector<uint> friendList, string departmentName)
+PermanentUser::PermanentUser(uint id, string name, uint age, uint heightCm, string hobbyList, unordered_set<uint> friendList, string departmentName)
 	: BaseUser(id, UserType::Permanent, name, age, heightCm, hobbyList, friendList)
 {
 	this->departmentName = departmentName;

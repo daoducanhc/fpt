@@ -7,23 +7,35 @@
 
 int main()
 {
+    IDbReader dbReader = CsvReader("user.csv");
+    Fb fb;
+    fb.setDbReader(dbReader);
+    fb.init();
+
     std::cout << "Hello World!\n";
 
-    FreshUser* user = new FreshUser(
+    FreshUser user(
         10, "name10", 10, 10,
         "bong chuyen, bong da",
-        vector<uint>({1,2,3}), "");
+        unordered_set<uint>({1,2,3}), "");
 
-    Fb fb;
-    fb.addUser(*user);
+    //FreshUser* temp = user.copy();
+    
+    fb.addUser(user);
     auto res = fb.getUserByName("name10");
     for (auto r : res) {
         cout << r.getName() << endl;
     }
 
     cout << "ABC" << endl;
-    auto res2 = fb.getFriendList(*user);
+    auto res2 = fb.getFriendList(user);
     for (auto r : res2) {
+        cout << r.getName() << endl;
+    }
+
+    fb.deleteUser(user);
+    res = fb.getUserByName("name10");
+    for (auto r : res) {
         cout << r.getName() << endl;
     }
 }

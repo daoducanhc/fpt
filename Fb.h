@@ -6,12 +6,13 @@ using namespace std;
 
 class Fb{
 private:
-    DbCtrl* dbCtrl;
+    IDbReader* dbReader;
     
 public:
     vector<BaseUser> UserList;
-
     Fb();
+    void init();
+    void setDbReader(IDbReader);
     void addUser(BaseUser a);
     void deleteUser(BaseUser a);
     vector<BaseUser> getUserByName(string name);
