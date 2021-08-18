@@ -1,27 +1,28 @@
-//#pragma once
-//#include "Fb.h"
+#pragma once
+#include "Fb.h"
+#include "DbCtrl.h"
 
-//class BaseTask {
-//protected:
-//	Fb *fb;
-//public:
-//	const string Name;
-//	void perform();
-//	void setFb(Fb* fb);
-//};
+class BaseTask {
+protected:
+	Fb *fb;
+public:
+	const string Name;
+	virtual void perform() = 0;
+	void setFb(Fb* fb);
+};
 
-//class AddUserTask : public BaseTask{
-//public:
-//	const string Name = "Add User";
-//	void perform();
-//};
+class AddUserTask : public BaseTask{
+public:
+	const string Name = "Add User";
+	void perform();
+};
 
-//class UiCtrl {
-//protected:
-//	Fb* fb;
-//	//vector<BaseTask*> taskList;
-//public:
-//	//UiCtrl();
-//	//void addTask(BaseTask *task);
-//	void run();
-//};
+class UiCtrl {
+protected:
+	Fb* fb;
+	vector<BaseTask*> taskList;
+public:
+	UiCtrl(Fb *fb);
+	void addTask(BaseTask *task);
+	void run();
+};

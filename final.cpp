@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include "Fb.h"
-
+#include "UiCtrl.h"
 
 int main()
 {
@@ -12,9 +12,10 @@ int main()
     fb.setDbReader(dbReader);
     fb.init();
 
-    //UiCtrl uiCtrl();
-    //AddUserTask add;
-    //uiCtrl.addTask(&add);
+    UiCtrl uiCtrl(&fb);
+    AddUserTask add;
+    uiCtrl.addTask(&add);
+    uiCtrl.run();
     /*std::cout << "Hello World!\n";
 
     FreshUser user(
