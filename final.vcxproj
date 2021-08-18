@@ -141,14 +141,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BaseUser.cpp" />
+    <ClCompile Include="CsvParser.cpp" />
     <ClCompile Include="DbCtrl.cpp" />
     <ClCompile Include="Fb.cpp" />
     <ClCompile Include="final.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseUser.h" />
+    <ClInclude Include="CsvParser.h" />
     <ClInclude Include="DbCtrl.h" />
     <ClInclude Include="Fb.h" />
+    <ClInclude Include="Utils.h" />
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="user.csv">

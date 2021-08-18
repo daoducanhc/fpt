@@ -1,3 +1,6 @@
+#ifndef  FB_H
+#define  FB_H
+
 #include "BaseUser.h"
 #include "DbCtrl.h"
 #include <string>
@@ -12,7 +15,7 @@ public:
     vector<BaseUser> UserList;
     Fb();
     void init();
-    void setDbReader(IDbReader);
+    void setDbReader(IDbReader*);
     void addUser(BaseUser a);
     void deleteUser(BaseUser a);
     vector<BaseUser> getUserByName(string name);
@@ -22,3 +25,4 @@ public:
 
     BaseUser* _getUserById(uint id);
 };
+#endif

@@ -72,9 +72,9 @@ vector<BaseUser> Fb::getFriendList(BaseUser a)
 	return result;
 }
 
-void Fb::setDbReader(IDbReader a)
+void Fb::setDbReader(IDbReader* a)
 {
-	dbReader = &a;
+	dbReader = a;
 }
 
 void Fb::init()

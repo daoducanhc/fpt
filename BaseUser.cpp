@@ -1,6 +1,5 @@
 #include "BaseUser.h"
 
-
 FreshUser::FreshUser(uint id, string name, uint age, uint heightCm, string hobbyList, unordered_set<uint> friendList, string className)
 	: BaseUser(id, UserType::Fresh, name, age, heightCm, hobbyList, friendList)
 {
