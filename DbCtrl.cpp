@@ -53,4 +53,3 @@ void CsvReader::write(vector<BaseUser> user)
 {
 
 }
-
