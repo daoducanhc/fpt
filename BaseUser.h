@@ -5,8 +5,8 @@
 #include <string>
 #include <vector>
 #include <unordered_set>
+#include "Utils.h"
 using namespace std;
-using uint = unsigned int;
 enum UserType {
 	Fresh,
 	Permanent,

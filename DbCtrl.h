@@ -24,7 +24,6 @@ private:
     CSVParser* row;
 public:
     CsvReader(string filePath, char separator);
-    static unordered_set<uint> parseFriendList(std::string sv);
     void read();
     vector<BaseUser> getUserList();
     void write(vector<BaseUser> a);

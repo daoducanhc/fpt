@@ -24,7 +24,7 @@ void AddUserTask::perform()
 	cout << "\nNhap loai nhan vien (0:Fresher, 1:Permanent): ";
 	cin >> type;
 	auto _type = static_cast<UserType>(type);
-	auto _friendList = CsvReader::parseFriendList(friendList);
+	auto _friendList = parseFriendList(friendList);
 	if (type == UserType::Fresh) {
 		cout << "\nNhap lop hoc: ";
 		getline(cin, workPlaceName);

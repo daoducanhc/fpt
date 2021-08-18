@@ -3,13 +3,21 @@
 #include <cctype>
 #include <locale>
 #include <string>
-#include <vector>
 #include <unordered_set>
-#include <iostream>
-#include <fstream>
 #include <sstream>
-#include <iterator>
-#include <vector>
+using uint = unsigned int;
+
+static inline std::unordered_set<uint> parseFriendList(std::string sv) {
+    std::stringstream ss(sv);
+    std::unordered_set<uint> result;
+    while (ss.good())
+    {
+        std::string substr;
+        getline(ss, substr, ',');
+        result.insert(stoi(substr));
+    }
+    return result;
+}
 
 // trim from start (in place)
 static inline void ltrim(std::string& s) {

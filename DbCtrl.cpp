@@ -8,18 +8,6 @@ CsvReader::CsvReader(string filePath, char separator)
     row = new CSVParser(separator);
 }
 
-unordered_set<uint> CsvReader::parseFriendList(std::string sv) {
-    stringstream ss(sv);
-    unordered_set<uint> result;
-    while (ss.good())
-    {
-        string substr;
-        getline(ss, substr, ',');
-        result.insert(stoi(substr));
-    }
-    return result;
-}
-
 void CsvReader::read()
 {
     userList.clear();

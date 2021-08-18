@@ -7,7 +7,7 @@
 
 int main()
 {
-    IDbReader* dbReader = new CsvReader("User.txt", '|');
+    IDbReader* dbReader = new CsvReader("user.csv", '|');
     Fb fb;
     fb.setDbReader(dbReader);
     fb.init();
