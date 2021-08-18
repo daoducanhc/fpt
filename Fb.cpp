@@ -22,6 +22,7 @@ void Fb::init()
 
 void Fb::addUser(BaseUser a)
 {
+	if (_getUserById(a.getId()) != NULL) return;
 	unordered_set<uint> list = a.getFriendList();
 	auto it = list.begin();
 	while (it != list.end()) {
@@ -49,10 +50,12 @@ void Fb::addUser(BaseUser a)
 	}
 
 	UserList.push_back(a);
+
 }
 
 void Fb::deleteUser(BaseUser a)
 {
+	if (_getUserById(a.getId()) == NULL) return;
 	// Update list friend of other
 	for (uint id : a.getFriendList()) {
 		BaseUser* temp = _getUserById(id);
@@ -104,7 +107,7 @@ vector<BaseUser> Fb::getFriendList(BaseUser a)
 	return result;
 }
 
-vector<BaseUser> Fb::getUserListByHobbyList(string hobbyList)
+unordered_set<uint> Fb::getUserListByHobbyList(string hobbyList)
 {
 	vector<BaseUser> result;
 	unordered_set<string> hobbies = _parseHoobyList(hobbyList);
@@ -114,29 +117,29 @@ vector<BaseUser> Fb::getUserListByHobbyList(string hobbyList)
 		userId.insert(HobbyMap[*it].begin(), HobbyMap[*it].end());
 		it++;
 	}
-	for (uint id : userId) {
+	/*for (uint id : userId) {
 		BaseUser* temp = _getUserById(id);
 		if (temp != NULL) {
 			result.push_back(*temp);
 		}
-	}
-	return result;
+	}*/
+	return userId;
 }
 
-void Fb::addFriend(BaseUser a, unordered_set<uint> idList)
+void Fb::addFriend(BaseUser *a, unordered_set<uint> idList)
 {
 	BaseUser* user;
 	for (uint id : idList) {
 		user = _getUserById(id);
 		if (_getUserById(id) != NULL) {
 			// Update list friend of a
-			unordered_set<uint> s = a.getFriendList();
+			unordered_set<uint> s = a->getFriendList();
 			s.insert(id);
-			a.setFriendList(s);
+			a->setFriendList(s);
 
 			// Update list friend of other
 			s = user->getFriendList();
-			s.insert(a.getId());
+			s.insert(a->getId());
 			user->setFriendList(s);
 		}
 	}
@@ -150,7 +153,16 @@ void Fb::_showAllInfo()
 void Fb::_showInfoByGroup(vector<BaseUser> a)
 {
 	for (int i = 0; i < a.size(); i++) {
-		cout << "\nId: " << a[i].getId() << "\tName: " << a[i].getName();
+		_showInfo(a[i]);
+	}
+}
+
+void Fb::_showInfo(BaseUser a) {
+	cout << "\nId: " << a.getId() << "\tName: " << a.getName() << "\tAge: " << a.getAge() << "\tHeight: "<< a.getHeightCm() << endl;
+	cout << "Hobbies: " << a.getHobbyList() << endl;
+	cout << "Friend: ";
+	for (uint j : a.getFriendList()) {
+		cout << j << " ";
 	}
 }
 

@@ -12,10 +12,24 @@ int main()
     fb.setDbReader(dbReader);
     fb.init();
 
-    UiCtrl uiCtrl(fb);
+    UiCtrl uiCtrl(&fb);
+    ShowTask showTask;
+    uiCtrl.addTask(&showTask);
     AddUserTask addUserTask;
     uiCtrl.addTask(&addUserTask);
+    DeleteUserTask deleteUserTask;
+    uiCtrl.addTask(&deleteUserTask);
+    FindUserByNameTask findByNameTask;
+    uiCtrl.addTask(&findByNameTask);
+    FindUserFriendTask findFriendTask;
+    uiCtrl.addTask(&findFriendTask);
+    FindSameHobbyTask findHobbyTask;
+    uiCtrl.addTask(&findHobbyTask);
+    AddFriendTask addFriendTask;
+    uiCtrl.addTask(&addFriendTask);
     uiCtrl.run();
+
+
     /*std::cout << "Hello World!\n";
 
     FreshUser user(

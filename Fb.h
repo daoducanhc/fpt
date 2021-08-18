@@ -1,4 +1,6 @@
-#pragma once
+#ifndef  FB_H
+#define  FB_H
+
 #include "BaseUser.h"
 #include "DbCtrl.h"
 #include <string>
@@ -21,12 +23,14 @@ public:
     void deleteUser(BaseUser a);
     vector<BaseUser> getUserByName(string name);
     vector<BaseUser> getFriendList(BaseUser a);
-    vector<BaseUser> getUserListByHobbyList(string hobbyList);
-    void addFriend(BaseUser a, unordered_set<uint> idList);
+    unordered_set<uint> getUserListByHobbyList(string hobbyList);
+    void addFriend(BaseUser *a, unordered_set<uint> idList);
 
     BaseUser* _getUserById(uint id);
+    void _showInfo(BaseUser a);
     void _showAllInfo();
     void _showInfoByGroup(vector<BaseUser> a);
     void _initHobbyMap();
     unordered_set<string> _parseHoobyList(string hobby);
 };
+#endif

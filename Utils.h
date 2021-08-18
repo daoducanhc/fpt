@@ -8,8 +8,9 @@
 using uint = unsigned int;
 
 static inline std::unordered_set<uint> parseFriendList(std::string sv) {
-    std::stringstream ss(sv);
     std::unordered_set<uint> result;
+    if (sv == "") return result;
+    std::stringstream ss(sv);
     while (ss.good())
     {
         std::string substr;
