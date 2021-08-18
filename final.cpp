@@ -12,7 +12,7 @@ int main()
     fb.setDbReader(dbReader);
     fb.init();
 
-    UiCtrl uiCtrl(&fb);
+    UiCtrl uiCtrl(fb);
     AddUserTask add;
     uiCtrl.addTask(&add);
     uiCtrl.run();

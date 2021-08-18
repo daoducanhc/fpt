@@ -1,6 +1,4 @@
-#ifndef  DB_READER_H
-#define  DB_READER_H
-
+#pragma once
 #include "Utils.h"
 #include "BaseUser.h"
 #include "CsvParser.h"
@@ -28,4 +26,3 @@ public:
     vector<BaseUser> getUserList();
     void write(vector<BaseUser> a);
 };
-#endif

@@ -1,6 +1,4 @@
-#ifndef  FB_H
-#define  FB_H
-
+#pragma once
 #include "BaseUser.h"
 #include "DbCtrl.h"
 #include <string>
@@ -32,4 +30,3 @@ public:
     void _initHobbyMap();
     unordered_set<string> _parseHoobyList(string hobby);
 };
-#endif

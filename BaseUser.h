@@ -1,12 +1,11 @@
-#ifndef  BASE_USER_H 
-#define  BASE_USER_H
-
 #pragma once
 #include <string>
 #include <vector>
 #include <unordered_set>
 #include "Utils.h"
+
 using namespace std;
+
 enum UserType {
 	Fresh,
 	Permanent,
@@ -60,4 +59,3 @@ public:
 	string getDepartmentName();
 	void setDepartmentName(string a);
 };
-#endif

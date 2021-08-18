@@ -40,9 +40,9 @@ void AddUserTask::perform()
 	
 }
 
-UiCtrl::UiCtrl(Fb* fb)
+UiCtrl::UiCtrl(Fb fb)
 {
-	this->fb = fb;
+	this->fb = &fb;
 }
 
 void UiCtrl::addTask(BaseTask *task)

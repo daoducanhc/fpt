@@ -21,7 +21,7 @@ protected:
 	Fb* fb;
 	vector<BaseTask*> taskList;
 public:
-	UiCtrl(Fb *fb);
+	UiCtrl(Fb fb);
 	void addTask(BaseTask *task);
 	void run();
 };

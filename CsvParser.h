@@ -1,8 +1,4 @@
-#ifndef  CSV_PARSER_H
-#define  CSV_PARSER_H
-
 #pragma once
-
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -27,4 +23,3 @@ public:
 // operator overloading signature should be declared in header file
 // then it will be implemented in cpp file
 std::istream& operator>>(std::istream& str, CSVParser& data);
-#endif
