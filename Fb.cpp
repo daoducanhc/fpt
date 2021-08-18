@@ -1,4 +1,7 @@
+#include <iostream>
 #include "Fb.h"
+
+using namespace std;
 
 Fb::Fb()
 {
@@ -7,11 +10,11 @@ Fb::Fb()
 
 void Fb::addUser(BaseUser a)
 {
-	unordered_set<uint> temp = a.getFriendList();
-	auto it = temp.begin();
-	while (it != temp.end()) {
+	unordered_set<uint> list = a.getFriendList();
+	auto it = list.begin();
+	while (it != list.end()) {
 		if (_getUserById(*it) == NULL) {
-			it = temp.erase(it);
+			it = list.erase(it);
 		}
 		else {
 			// Update list friend of other
@@ -23,7 +26,7 @@ void Fb::addUser(BaseUser a)
 			++it;
 		}
 	}
-	a.setFriendList(temp);
+	a.setFriendList(list);
 	UserList.push_back(a);
 }
 
@@ -72,9 +75,9 @@ vector<BaseUser> Fb::getFriendList(BaseUser a)
 	return result;
 }
 
-void Fb::setDbReader(IDbReader a)
+void Fb::setDbReader(IDbReader *a)
 {
-	dbReader = &a;
+	dbReader = a;
 }
 
 void Fb::init()
@@ -88,8 +91,30 @@ vector<BaseUser> Fb::getUserListByHobbyList(string hobbyList)
 	return vector<BaseUser>();
 }
 
-void Fb::addFriend(BaseUser a, vector<uint> idList)
+void Fb::_showAllInfo()
 {
+	for (int i = 0; i < UserList.size(); i++) {
+		printf("\nId: %d\n", UserList[i].getId());
+	}
+}
+
+void Fb::addFriend(BaseUser a, unordered_set<uint> idList)
+{
+	BaseUser* user;
+	for (uint id : idList) {
+		user = _getUserById(id);
+		if (_getUserById(id) != NULL) {
+			// Update list friend of a
+			unordered_set<uint> s = a.getFriendList();
+			s.insert(id);
+			a.setFriendList(s);
+
+			// Update list friend of other
+			s = user->getFriendList();
+			s.insert(a.getId());
+			user->setFriendList(s);
+		}
+	}
 }
 
 
@@ -106,4 +131,23 @@ BaseUser* Fb::_getUserById(uint id)
 		}
 	}*/
 	return NULL;
+}
+
+void Fb::_initHobbyMap() {
+	for (int i = 0; i < UserList.size(); i++) {
+		unordered_set<string> hobbies = _parseHoobyList(UserList[i].getHobbyList());
+
+	}
+}
+
+unordered_set<string> Fb::_parseHoobyList(string hobby) {
+	unordered_set<string> result;
+	stringstream ss(hobby);
+	while (ss.good())
+	{
+		string substr;
+		getline(ss, substr, ',');
+		result.insert(substr);
+	}
+	return result;
 }

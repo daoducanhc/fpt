@@ -1,10 +1,5 @@
 #include "DbCtrl.h"
-#include <iterator>
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <vector>
-#include <string>
+
 
 using namespace std;
 
@@ -63,7 +58,7 @@ unordered_set<uint> parseFriendList(std::string sv) {
     return result;
 }
 
-void IDbReader::read()
+void CsvReader::read()
 {
     userList.clear();
     std::ifstream file(filePath);
@@ -97,4 +92,3 @@ void CsvReader::write(vector<BaseUser> user)
 {
 
 }
-

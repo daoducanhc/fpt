@@ -7,7 +7,7 @@
 
 int main()
 {
-    IDbReader dbReader = CsvReader("user.csv");
+    IDbReader* dbReader = new CsvReader("user.csv");
     Fb fb;
     fb.setDbReader(dbReader);
     fb.init();
@@ -19,8 +19,8 @@ int main()
         "bong chuyen, bong da",
         unordered_set<uint>({1,2,3}), "");
 
-    //FreshUser* temp = user.copy();
-    
+    fb._showAllInfo();
+
     fb.addUser(user);
     auto res = fb.getUserByName("name10");
     for (auto r : res) {
