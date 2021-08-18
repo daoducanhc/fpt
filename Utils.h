@@ -1,8 +1,15 @@
 #pragma once
-
 #include <algorithm> 
 #include <cctype>
 #include <locale>
+#include <string>
+#include <vector>
+#include <unordered_set>
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <iterator>
+#include <vector>
 
 // trim from start (in place)
 static inline void ltrim(std::string& s) {

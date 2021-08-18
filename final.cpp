@@ -7,26 +7,29 @@
 
 int main()
 {
-    IDbReader* dbReader = new CsvReader("user.csv", ';');
+    IDbReader* dbReader = new CsvReader("User.txt", '|');
     Fb fb;
     fb.setDbReader(dbReader);
     fb.init();
 
-    std::cout << "Hello World!\n";
+    //UiCtrl uiCtrl();
+    //AddUserTask add;
+    //uiCtrl.addTask(&add);
+    /*std::cout << "Hello World!\n";
 
     FreshUser user(
         10, "name10", 10, 10,
         "bong chuyen, bong da",
         unordered_set<uint>({1,2,3}), "");
 
-    fb._showAllInfo();
 
     fb.addUser(user);
+    fb._showAllInfo();
     auto res = fb.getUserByName("name10");
     for (auto r : res) {
         cout << r.getName() << endl;
     }
-
+    fb._showInfoByGroup(fb.getUserListByHobbyList("bong chuyen, cau long"));
     cout << "ABC" << endl;
     auto res2 = fb.getFriendList(user);
     for (auto r : res2) {
@@ -37,5 +40,5 @@ int main()
     res = fb.getUserByName("name10");
     for (auto r : res) {
         cout << r.getName() << endl;
-    }
+    }*/
 }

@@ -145,18 +145,23 @@
     <ClCompile Include="DbCtrl.cpp" />
     <ClCompile Include="Fb.cpp" />
     <ClCompile Include="final.cpp" />
+    <ClCompile Include="UiCtrl.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseUser.h" />
     <ClInclude Include="CsvParser.h" />
     <ClInclude Include="DbCtrl.h" />
     <ClInclude Include="Fb.h" />
+    <ClInclude Include="UiCtrl.h" />
     <ClInclude Include="Utils.h" />
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="user.csv">
       <FileType>Document</FileType>
     </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="User.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

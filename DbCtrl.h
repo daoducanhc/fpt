@@ -1,6 +1,7 @@
 #ifndef  DB_READER_H
 #define  DB_READER_H
 
+#include "Utils.h"
 #include "BaseUser.h"
 #include "CsvParser.h"
 
@@ -21,9 +22,9 @@ private:
     string filePath;
     vector<BaseUser> userList;
     CSVParser* row;
-    unordered_set<uint> parseFriendList(string sv);
 public:
     CsvReader(string filePath, char separator);
+    unordered_set<uint> parseFriendList(std::string sv);
     void read();
     vector<BaseUser> getUserList();
     void write(vector<BaseUser> a);

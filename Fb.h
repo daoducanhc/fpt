@@ -5,6 +5,7 @@
 #include "DbCtrl.h"
 #include <string>
 #include <unordered_map>
+#include "Utils.h"
 
 using namespace std;
 
@@ -14,7 +15,7 @@ private:
     
 public:
     vector<BaseUser> UserList;
-    unordered_map<string, vector<uint>> HobbyMap;
+    unordered_map<string, unordered_set<uint>> HobbyMap;
     Fb();
     void init();
     void setDbReader(IDbReader*);
@@ -27,6 +28,7 @@ public:
 
     BaseUser* _getUserById(uint id);
     void _showAllInfo();
+    void _showInfoByGroup(vector<BaseUser> a);
     void _initHobbyMap();
     unordered_set<string> _parseHoobyList(string hobby);
 };

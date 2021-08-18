@@ -8,6 +8,18 @@ Fb::Fb()
 
 }
 
+void Fb::setDbReader(IDbReader* a)
+{
+	dbReader = a;
+}
+
+void Fb::init()
+{
+	dbReader->read();
+	UserList = dbReader->getUserList();
+	_initHobbyMap();
+}
+
 void Fb::addUser(BaseUser a)
 {
 	unordered_set<uint> list = a.getFriendList();
@@ -27,6 +39,15 @@ void Fb::addUser(BaseUser a)
 		}
 	}
 	a.setFriendList(list);
+
+	// Update HobbyMap
+	unordered_set<string> hobbies = _parseHoobyList(a.getHobbyList());
+	unordered_set<string>::iterator it2 = hobbies.begin();
+	while (it2 != hobbies.end()) {
+		HobbyMap[*it2].insert(a.getId());
+		it2++;
+	}
+
 	UserList.push_back(a);
 }
 
@@ -40,6 +61,14 @@ void Fb::deleteUser(BaseUser a)
 			s.erase(a.getId());
 			temp->setFriendList(s);
 		}
+	}
+
+	// Update HobbyMap
+	unordered_set<string> hobbies = _parseHoobyList(a.getHobbyList());
+	unordered_set<string>::iterator it2 = hobbies.begin();
+	while (it2 != hobbies.end()) {
+		HobbyMap[*it2].erase(a.getId());
+		it2++;
 	}
 
 	UserList.erase(remove_if(UserList.begin(), UserList.end(),
@@ -75,27 +104,23 @@ vector<BaseUser> Fb::getFriendList(BaseUser a)
 	return result;
 }
 
-void Fb::setDbReader(IDbReader* a)
-{
-	dbReader = a;
-}
-
-void Fb::init()
-{
-	dbReader->read();
-	UserList = dbReader->getUserList();
-}
-
 vector<BaseUser> Fb::getUserListByHobbyList(string hobbyList)
 {
-	return vector<BaseUser>();
-}
-
-void Fb::_showAllInfo()
-{
-	for (int i = 0; i < UserList.size(); i++) {
-		printf("\nId: %d\n", UserList[i].getId());
+	vector<BaseUser> result;
+	unordered_set<string> hobbies = _parseHoobyList(hobbyList);
+	unordered_set<string>::iterator it = hobbies.begin();
+	unordered_set<uint> userId;
+	while (it != hobbies.end()) {
+		userId.insert(HobbyMap[*it].begin(), HobbyMap[*it].end());
+		it++;
 	}
+	for (uint id : userId) {
+		BaseUser* temp = _getUserById(id);
+		if (temp != NULL) {
+			result.push_back(*temp);
+		}
+	}
+	return result;
 }
 
 void Fb::addFriend(BaseUser a, unordered_set<uint> idList)
@@ -117,6 +142,17 @@ void Fb::addFriend(BaseUser a, unordered_set<uint> idList)
 	}
 }
 
+void Fb::_showAllInfo()
+{
+	_showInfoByGroup(UserList);
+}
+
+void Fb::_showInfoByGroup(vector<BaseUser> a)
+{
+	for (int i = 0; i < a.size(); i++) {
+		cout << "\nId: " << a[i].getId() << "\tName: " << a[i].getName();
+	}
+}
 
 BaseUser* Fb::_getUserById(uint id)
 {
@@ -136,7 +172,11 @@ BaseUser* Fb::_getUserById(uint id)
 void Fb::_initHobbyMap() {
 	for (int i = 0; i < UserList.size(); i++) {
 		unordered_set<string> hobbies = _parseHoobyList(UserList[i].getHobbyList());
-
+		unordered_set<string>::iterator it = hobbies.begin();
+		while (it != hobbies.end()) {
+			HobbyMap[*it].insert(UserList[i].getId());
+			it++;
+		}
 	}
 }
 
@@ -147,6 +187,7 @@ unordered_set<string> Fb::_parseHoobyList(string hobby) {
 	{
 		string substr;
 		getline(ss, substr, ',');
+		trim(substr);
 		result.insert(substr);
 	}
 	return result;
