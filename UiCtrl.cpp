@@ -5,6 +5,11 @@ void BaseTask::setFb(Fb* fb)
 	this->fb = fb;
 }
 
+AddUserTask::AddUserTask() {
+	Name = "Add User";
+}
+
+
 void AddUserTask::perform()
 {
 	uint id, type, age, height;
@@ -37,7 +42,7 @@ void AddUserTask::perform()
 		PermanentUser user(id, name, age, height, hobby, _friendList, workPlaceName);
 		fb->addUser(user);
 	}
-	
+
 }
 
 UiCtrl::UiCtrl(Fb fb)
@@ -57,7 +62,7 @@ void UiCtrl::run()
 		// Print menu
 		for (int i = 0; i < taskList.size(); i++) {
 			auto task = taskList[i];
-			cout << i + 1 << ": " << taskList[i]->Name << endl;
+			cout << i << ": " << taskList[i]->Name << endl;
 		}
 		cout << "Chon tac vu: ";
 		int i;

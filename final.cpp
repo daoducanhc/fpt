@@ -13,8 +13,8 @@ int main()
     fb.init();
 
     UiCtrl uiCtrl(fb);
-    AddUserTask add;
-    uiCtrl.addTask(&add);
+    AddUserTask addUserTask;
+    uiCtrl.addTask(&addUserTask);
     uiCtrl.run();
     /*std::cout << "Hello World!\n";
 

@@ -5,14 +5,14 @@ class BaseTask {
 protected:
 	Fb *fb;
 public:
-	const string Name;
+	string Name;
 	virtual void perform() = 0;
 	void setFb(Fb* fb);
 };
 
 class AddUserTask : public BaseTask{
 public:
-	const string Name = "Add User";
+	AddUserTask();
 	void perform();
 };
 
