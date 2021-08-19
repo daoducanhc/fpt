@@ -4,10 +4,11 @@
 class BaseTask {
 protected:
 	Fb *fb;
+	string name;
 public:
-	string Name;
 	virtual void perform() = 0;
 	void setFb(Fb* fb);
+	string getName();
 };
 
 class AddUserTask : public BaseTask{

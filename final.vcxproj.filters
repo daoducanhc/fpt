@@ -58,4 +58,7 @@
     <CopyFileToFolders Include="user.csv" />
     <CopyFileToFolders Include="User.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+  </ItemGroup>
 </Project>

@@ -12,12 +12,15 @@ using namespace std;
 class Fb{
 private:
     IDbReader* dbReader;
+    void _initHobbyMap();
+    unordered_set<string> _parseHoobyList(string hobby);
+    unordered_map<string, unordered_set<uint>> HobbyMap;
+    vector<BaseUser> userList;
     
 public:
-    vector<BaseUser> UserList;
-    unordered_map<string, unordered_set<uint>> HobbyMap;
     Fb();
     void init();
+    vector<BaseUser> getUserList();
     void setDbReader(IDbReader*);
     void addUser(BaseUser a);
     void deleteUser(BaseUser a);
@@ -25,12 +28,9 @@ public:
     vector<BaseUser> getFriendList(BaseUser a);
     unordered_set<uint> getUserListByHobbyList(string hobbyList);
     void addFriend(BaseUser *a, unordered_set<uint> idList);
-
-    BaseUser* _getUserById(uint id);
-    void _showInfo(BaseUser a);
-    void _showAllInfo();
-    void _showInfoByGroup(vector<BaseUser> a);
-    void _initHobbyMap();
-    unordered_set<string> _parseHoobyList(string hobby);
+    void showAllInfo();
+    BaseUser* getUserById(uint id);
+    void showInfoByGroup(vector<BaseUser> a);
+    void showInfo(BaseUser a);
 };
 #endif

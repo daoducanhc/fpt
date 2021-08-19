@@ -16,22 +16,27 @@ void Fb::setDbReader(IDbReader* a)
 void Fb::init()
 {
 	dbReader->read();
-	UserList = dbReader->getUserList();
+	userList = dbReader->getUserList();
 	_initHobbyMap();
+}
+
+vector<BaseUser> Fb::getUserList()
+{
+	return userList;
 }
 
 void Fb::addUser(BaseUser a)
 {
-	if (_getUserById(a.getId()) != NULL) return;
+	if (getUserById(a.getId()) != NULL) return;
 	unordered_set<uint> list = a.getFriendList();
 	auto it = list.begin();
 	while (it != list.end()) {
-		if (_getUserById(*it) == NULL) {
+		if (getUserById(*it) == NULL) {
 			it = list.erase(it);
 		}
 		else {
 			// Update list friend of other
-			BaseUser* temp = _getUserById(*it);
+			BaseUser* temp = getUserById(*it);
 			unordered_set<uint> s = temp->getFriendList();
 			s.insert(a.getId());
 			temp->setFriendList(s);
@@ -49,16 +54,16 @@ void Fb::addUser(BaseUser a)
 		it2++;
 	}
 
-	UserList.push_back(a);
+	userList.push_back(a);
 
 }
 
 void Fb::deleteUser(BaseUser a)
 {
-	if (_getUserById(a.getId()) == NULL) return;
+	if (getUserById(a.getId()) == NULL) return;
 	// Update list friend of other
 	for (uint id : a.getFriendList()) {
-		BaseUser* temp = _getUserById(id);
+		BaseUser* temp = getUserById(id);
 		if (temp != NULL) {
 			unordered_set<uint> s = temp->getFriendList();
 			s.erase(a.getId());
@@ -74,7 +79,7 @@ void Fb::deleteUser(BaseUser a)
 		it2++;
 	}
 
-	UserList.erase(remove_if(UserList.begin(), UserList.end(),
+	userList.erase(remove_if(userList.begin(), userList.end(),
 		[&a](BaseUser i) {
 			return i.getId() == a.getId();
 		}
@@ -86,7 +91,7 @@ void Fb::deleteUser(BaseUser a)
 vector<BaseUser> Fb::getUserByName(string name)
 {
 	vector<BaseUser> result;
-	for (BaseUser user : UserList) {
+	for (BaseUser user : userList) {
 		if (user.getName() == name) {
 			result.push_back(user);
 		}
@@ -99,7 +104,7 @@ vector<BaseUser> Fb::getFriendList(BaseUser a)
 	vector<BaseUser> result;
 	BaseUser* user;
 	for (uint id : a.getFriendList()) {
-		user = _getUserById(id);
+		user = getUserById(id);
 		if (user != NULL) {
 			result.push_back(*user);
 		}
@@ -118,7 +123,7 @@ unordered_set<uint> Fb::getUserListByHobbyList(string hobbyList)
 		it++;
 	}
 	/*for (uint id : userId) {
-		BaseUser* temp = _getUserById(id);
+		BaseUser* temp = getUserById(id);
 		if (temp != NULL) {
 			result.push_back(*temp);
 		}
@@ -130,8 +135,8 @@ void Fb::addFriend(BaseUser *a, unordered_set<uint> idList)
 {
 	BaseUser* user;
 	for (uint id : idList) {
-		user = _getUserById(id);
-		if (_getUserById(id) != NULL) {
+		user = getUserById(id);
+		if (getUserById(id) != NULL) {
 			// Update list friend of a
 			unordered_set<uint> s = a->getFriendList();
 			s.insert(id);
@@ -145,19 +150,19 @@ void Fb::addFriend(BaseUser *a, unordered_set<uint> idList)
 	}
 }
 
-void Fb::_showAllInfo()
+void Fb::showAllInfo()
 {
-	_showInfoByGroup(UserList);
+	showInfoByGroup(userList);
 }
 
-void Fb::_showInfoByGroup(vector<BaseUser> a)
+void Fb::showInfoByGroup(vector<BaseUser> a)
 {
 	for (int i = 0; i < a.size(); i++) {
-		_showInfo(a[i]);
+		showInfo(a[i]);
 	}
 }
 
-void Fb::_showInfo(BaseUser a) {
+void Fb::showInfo(BaseUser a) {
 	cout << "\nId: " << a.getId() << "\tName: " << a.getName() << "\tAge: " << a.getAge() << "\tHeight: "<< a.getHeightCm() << endl;
 	cout << "Hobbies: " << a.getHobbyList() << endl;
 	cout << "Friend: ";
@@ -166,14 +171,14 @@ void Fb::_showInfo(BaseUser a) {
 	}
 }
 
-BaseUser* Fb::_getUserById(uint id)
+BaseUser* Fb::getUserById(uint id)
 {
-	for (int i = 0; i < UserList.size(); ++i) {
-		if (UserList[i].getId() == id) {
-			return &UserList[i];
+	for (int i = 0; i < userList.size(); ++i) {
+		if (userList[i].getId() == id) {
+			return &userList[i];
 		}
 	}
-	/*for (BaseUser& user : UserList) {
+	/*for (BaseUser& user : userList) {
 		if (user.getId() == id) {
 			return &user;
 		}
@@ -182,11 +187,11 @@ BaseUser* Fb::_getUserById(uint id)
 }
 
 void Fb::_initHobbyMap() {
-	for (int i = 0; i < UserList.size(); i++) {
-		unordered_set<string> hobbies = _parseHoobyList(UserList[i].getHobbyList());
+	for (int i = 0; i < userList.size(); i++) {
+		unordered_set<string> hobbies = _parseHoobyList(userList[i].getHobbyList());
 		unordered_set<string>::iterator it = hobbies.begin();
 		while (it != hobbies.end()) {
-			HobbyMap[*it].insert(UserList[i].getId());
+			HobbyMap[*it].insert(userList[i].getId());
 			it++;
 		}
 	}

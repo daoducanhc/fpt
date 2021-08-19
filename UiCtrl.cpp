@@ -5,6 +5,11 @@ void BaseTask::setFb(Fb* fb)
 	this->fb = fb;
 }
 
+string BaseTask::getName()
+{
+	return name;
+}
+
 UiCtrl::UiCtrl(Fb *fb)
 {
 	this->fb = fb;
@@ -22,7 +27,7 @@ void UiCtrl::run()
 		// Print menu
 		for (int i = 0; i < taskList.size(); i++) {
 			auto task = taskList[i];
-			cout << i << ": " << taskList[i]->Name << endl;
+			cout << i << ": " << taskList[i]->getName() << endl;
 		}
 		cout << "Chon tac vu: ";
 		int i;
@@ -32,7 +37,7 @@ void UiCtrl::run()
 }
 
 AddUserTask::AddUserTask() {
-	Name = "Add User";
+	name = "Add User";
 }
 
 void AddUserTask::perform()
@@ -91,7 +96,7 @@ void AddUserTask::perform()
 
 DeleteUserTask::DeleteUserTask()
 {
-	this->Name = "Delete User";
+	this->name = "Delete User";
 }
 
 void DeleteUserTask::perform()
@@ -99,13 +104,13 @@ void DeleteUserTask::perform()
 	uint id;
 	cout << "\nNhap id: ";
 	cin >> id;
-	BaseUser *temp = fb->_getUserById(id);
+	BaseUser *temp = fb->getUserById(id);
 	fb->deleteUser(*temp);
 }
 
 FindUserByNameTask::FindUserByNameTask()
 {
-	Name = "Find User By Name";
+	name = "Find User By Name";
 }
 
 void FindUserByNameTask::perform()
@@ -115,13 +120,13 @@ void FindUserByNameTask::perform()
 	cin.ignore(1024, '\n');
 	getline(cin, name);
 	vector<BaseUser> temp = fb->getUserByName(name);
-	fb->_showInfoByGroup(temp);
+	fb->showInfoByGroup(temp);
 	cout << "\n\n";
 }
 
 FindUserFriendTask::FindUserFriendTask()
 {
-	Name = "Find Friend of User";
+	name = "Find Friend of User";
 }
 
 void FindUserFriendTask::perform()
@@ -129,15 +134,15 @@ void FindUserFriendTask::perform()
 	uint id;
 	cout << "\nNhap id: ";
 	cin >> id;
-	BaseUser* temp = fb->_getUserById(id);
+	BaseUser* temp = fb->getUserById(id);
 	vector<BaseUser> a = fb->getFriendList(*temp);
-	fb->_showInfoByGroup(a);
+	fb->showInfoByGroup(a);
 	cout << "\n\n";
 }
 
 FindSameHobbyTask::FindSameHobbyTask()
 {
-	Name = "Find User has same hobby";
+	name = "Find User has same hobby";
 }
 
 void FindSameHobbyTask::perform()
@@ -155,7 +160,7 @@ void FindSameHobbyTask::perform()
 
 AddFriendTask::AddFriendTask()
 {
-	Name = "Add Friend";
+	name = "Add Friend";
 }
 
 void AddFriendTask::perform()
@@ -168,24 +173,25 @@ void AddFriendTask::perform()
 	cin.ignore(1024, '\n');
 	getline(cin, friendList);
 	auto _friendList = parseFriendList(friendList);
-	BaseUser* temp = fb->_getUserById(id);
+	BaseUser* temp = fb->getUserById(id);
 	fb->addFriend(temp, _friendList);
 	cout << "\n";
 }
 
 ShowTask::ShowTask()
 {
-	Name = "Show user";
+	name = "Show user";
 }
 
 void ShowTask::perform()
 {
+	auto userList = fb->getUserList();
 	uint n;
 	cout << "\nNhap so nguoi muon show: ";
 	cin >> n;
-	if (n > fb->UserList.size()) n = fb->UserList.size();
+	if (n > userList.size()) n = userList.size();
 	for (int i = 0; i < n; i++) {
-		fb->_showInfo(fb->UserList[i]);
+		fb->showInfo(userList[i]);
 	}
 
 	cout << "\n\n";

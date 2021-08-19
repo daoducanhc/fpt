@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access">
+  <Class Name="BaseUser" Collapsed="true">
+    <Position X="5.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgQEAEAABAAAQAAAACBAAEQAARBFAABERAAEAAAAAgA=</HashCode>
+      <FileName>BaseUser.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FreshUser">
+    <Position X="4.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAIAAAAAAAAAAAAAAAAAgAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>BaseUser.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PermanentUser">
+    <Position X="6.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAEAAAQAAAAAAAAAAAAEAABA=</HashCode>
+      <FileName>BaseUser.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CSVParser">
+    <Position X="11.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAIAAAAAAEIEAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>CsvParser.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IDbReader">
+    <Position X="9.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAQAIAAAAAAA=</HashCode>
+      <FileName>DbCtrl.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CsvReader">
+    <Position X="9.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAACAAAAACAAAAAEAAAQAIAAAAgAA=</HashCode>
+      <FileName>DbCtrl.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fb">
+    <Position X="19" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAABIAAAAQAAAAQQAAAIgAAJAAAAIIABBgCQ=</HashCode>
+      <FileName>Fb.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BaseTask">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAABAAAAAAAAAAAAAAAAEAAAEAAAEAAAAAAA=</HashCode>
+      <FileName>UiCtrl.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AddUserTask" Collapsed="true">
+    <Position X="12.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UiCtrl.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DeleteUserTask" Collapsed="true">
+    <Position X="1" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>UiCtrl.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FindUserByNameTask" Collapsed="true">
+    <Position X="5.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UiCtrl.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FindUserFriendTask" Collapsed="true">
+    <Position X="7.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>UiCtrl.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FindSameHobbyTask" Collapsed="true">
+    <Position X="10" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UiCtrl.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AddFriendTask" Collapsed="true">
+    <Position X="14.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>UiCtrl.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShowTask" Collapsed="true">
+    <Position X="3.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>UiCtrl.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UiCtrl">
+    <Position X="16.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAgAAAABAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>UiCtrl.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="UserType">
+    <Position X="1" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAgAAAAAAA=</HashCode>
+      <FileName>BaseUser.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
